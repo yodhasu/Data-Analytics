@@ -15,7 +15,6 @@ print("test debug print")
 st.title("Ecommerce Dataset Dashboard")
 st.markdown("Alethea Agung Yodha Pratama - 24072262")
 
-@st.cache_data
 def load_data():
     df = pd.read_csv("https://raw.githubusercontent.com/yodhasu/Data-Analytics/refs/heads/main/Assignment%201/data-2.csv")
     print("Data loaded successfully")
