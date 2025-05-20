@@ -16,7 +16,7 @@ st.title("Ecommerce Dataset Dashboard")
 st.markdown("Alethea Agung Yodha Pratama - 24072262")
 
 def load_data():
-    df = pd.read_csv("https://raw.githubusercontent.com/yodhasu/Data-Analytics/refs/heads/main/Assignment%201/data-2.csv")
+    df = pd.read_csv(r"data-2.csv")
     print("Data loaded successfully")
     df.drop(df[df['CustomerID'].isna() | df['Description'].isna()].index, inplace=True)
     df.drop(df.query('Country == "Unspecified"').index, inplace=True)
@@ -34,8 +34,6 @@ def load_data():
 
 def total_revenue_plot():
     total_revenue = Sales.groupby('Date', as_index=False)['Revenue'].sum().round(2)
-
-    # Ensure your dates are ordered correctly (optional manual ordering)
     order_list = ["05","09","01","13","03","02","08","07","04","06","12","11","10"]
     total_revenue['Order'] = order_list
     total_revenue.sort_values(by='Order', inplace=True)
