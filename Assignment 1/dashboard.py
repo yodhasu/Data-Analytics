@@ -11,6 +11,7 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
+print("test debug print")
 st.title("Ecommerce Dataset Dashboard")
 st.markdown("Alethea Agung Yodha Pratama - 24072262")
 
