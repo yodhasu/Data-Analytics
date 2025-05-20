@@ -16,10 +16,11 @@ st.markdown("Alethea Agung Yodha Pratama - 24072262")
 
 @st.cache_data
 def load_data():
-    import pandas as pd
     df = pd.read_csv("https://raw.githubusercontent.com/yodhasu/Data-Analytics/refs/heads/main/Assignment%201/data-2.csv")
+    print("Data loaded successfully")
     df.drop(df[df['CustomerID'].isna() | df['Description'].isna()].index, inplace=True)
     df.drop(df.query('Country == "Unspecified"').index, inplace=True)
+    print("Data dropped successfully")
     df = df.astype({'InvoiceDate':'datetime64[ns]','CustomerID':'int'})
     df['Revenue'] = abs(df['UnitPrice'] * df['Quantity'])
     df['Year'] = df['InvoiceDate'].dt.year
@@ -27,6 +28,7 @@ def load_data():
     df['Date'] = df[['Month','Year']].astype(str).apply('-'.join, axis=1)
     df['Day'] = df['InvoiceDate'].dt.day_name()
     df['Hour'] = df['InvoiceDate'].dt.hour
+    print("Data transformed successfully")
     
     return df
 
